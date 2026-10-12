@@ -3,7 +3,7 @@
 Первоначальные коммиты: .gitignore, books.py, README.md + books.json.example.
 
 ```text
-$ C:\Users\Admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m unittest discover -s tests -v
+$ python -m unittest discover -s tests -v
 test_add (test_books.CatalogTests.test_add) ... ok
 test_author_search (test_books.CatalogTests.test_author_search) ... ERROR
 test_limit (test_books.CatalogTests.test_limit) ... ok
@@ -22,7 +22,7 @@ Ran 3 tests in 0.074s
 
 FAILED (errors=1)
 
-$ C:\Users\Admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m unittest discover -s tests -v
+$ python -m unittest discover -s tests -v
 test_add (test_books.CatalogTests.test_add) ... ok
 test_author_search (test_books.CatalogTests.test_author_search) ... ok
 test_limit (test_books.CatalogTests.test_limit) ... ok
@@ -132,7 +132,7 @@ $ git commit -m feat: search catalog by author
 [main d9864f4] feat: search catalog by author
  2 files changed, 12 insertions(+), 1 deletion(-)
 
-$ C:\Users\Admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m unittest discover -s tests -v
+$ python -m unittest discover -s tests -v
 test_add (test_books.CatalogTests.test_add) ... ok
 test_author_search (test_books.CatalogTests.test_author_search) ... ok
 test_export_cli (test_books.CatalogTests.test_export_cli) ... FAIL
@@ -151,7 +151,7 @@ Ran 4 tests in 0.287s
 
 FAILED (failures=1)
 
-$ C:\Users\Admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m unittest discover -s tests -v
+$ python -m unittest discover -s tests -v
 test_add (test_books.CatalogTests.test_add) ... ok
 test_author_search (test_books.CatalogTests.test_author_search) ... ok
 test_export_cli (test_books.CatalogTests.test_export_cli) ... ok
@@ -322,7 +322,7 @@ $ git commit --amend -m docs: describe catalog commands
 $ git switch -c feature/isbn-search
 Switched to a new branch 'feature/isbn-search'
 
-$ C:\Users\Admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m unittest discover -s tests -v
+$ python -m unittest discover -s tests -v
 test_add (test_books.CatalogTests.test_add) ... ok
 test_author_search (test_books.CatalogTests.test_author_search) ... ok
 test_export_cli (test_books.CatalogTests.test_export_cli) ... ok
@@ -409,7 +409,7 @@ $ git commit -m feat: implement normalized ISBN lookup
 [feature/isbn-search c02c3b7] feat: implement normalized ISBN lookup
  2 files changed, 9 insertions(+)
 
-$ C:\Users\Admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m unittest discover -s tests -v
+$ python -m unittest discover -s tests -v
 test_add (test_books.CatalogTests.test_add) ... ok
 test_author_search (test_books.CatalogTests.test_author_search) ... ok
 test_export_cli (test_books.CatalogTests.test_export_cli) ... ok
@@ -653,7 +653,7 @@ index c59d8c1,e7c94a9..0000000
   
   def load_books(path):
 
-$ C:\Users\Admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m unittest discover -s tests -v
+$ python -m unittest discover -s tests -v
 test_add (test_books.CatalogTests.test_add) ... ok
 test_author_search (test_books.CatalogTests.test_author_search) ... ok
 test_export_cli (test_books.CatalogTests.test_export_cli) ... ok
@@ -742,7 +742,7 @@ $ git status --short
 
 $ git diff
 
-$ C:\Users\Admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m unittest discover -s tests -v
+$ python -m unittest discover -s tests -v
 test_add (test_books.CatalogTests.test_add) ... ok
 test_author_search (test_books.CatalogTests.test_author_search) ... ok
 test_export_cli (test_books.CatalogTests.test_export_cli) ... ok
