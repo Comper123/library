@@ -55,6 +55,8 @@ def main():
     add.add_argument("--isbn", required=True)
     author = commands.add_parser("search-author", help="Поиск по части имени автора")
     author.add_argument("query")
+    export = commands.add_parser("export", help="Экспортировать список в JSON")
+    export.add_argument("output", type=Path)
     args = parser.parse_args()
     try:
         books = load_books(args.file)
@@ -62,6 +64,10 @@ def main():
             add_book(books, args.title, args.author, args.isbn)
             save_books(args.file, books)
         result = search_author(books, args.query) if args.command == "search-author" else books
+        if args.command == "export":
+            if args.output.resolve() == args.file.resolve():
+                raise ValueError("Выберите отдельный файл для экспорта")
+            save_books(args.output, books)
         print(json.dumps(result, ensure_ascii=False, indent=2))
     except (OSError, ValueError) as error:
         parser.exit(1, f"Ошибка: {error}\n")

@@ -30,3 +30,14 @@ class CatalogTests(unittest.TestCase):
         catalog = [{"title": "T", "author": "Михаил Булгаков", "isbn": "1"}]
         self.assertEqual(books.search_author(catalog, "БУЛГАКОВ"), catalog)
         self.assertEqual(books.search_author(catalog, "Пушкин"), [])
+
+    def test_export_cli(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "books.json"
+            target = Path(directory) / "export.json"
+            catalog = [{"title": "Книга", "author": "Автор", "isbn": "1"}]
+            books.save_books(source, catalog)
+            result = subprocess.run([sys.executable, "books.py", "--file", str(source),
+                                     "export", str(target)], capture_output=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(books.load_books(target), catalog)
