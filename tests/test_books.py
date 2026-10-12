@@ -25,3 +25,8 @@ class CatalogTests(unittest.TestCase):
         catalog.pop()
         books.add_book(catalog, "T", "A", "unique")
         self.assertEqual(len(catalog), books.MAX_BOOKS)
+
+    def test_author_search(self):
+        catalog = [{"title": "T", "author": "Михаил Булгаков", "isbn": "1"}]
+        self.assertEqual(books.search_author(catalog, "БУЛГАКОВ"), catalog)
+        self.assertEqual(books.search_author(catalog, "Пушкин"), [])

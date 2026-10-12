@@ -40,6 +40,10 @@ def add_book(books, title, author, isbn):
     books.append({"title": title, "author": author, "isbn": isbn})
 
 
+def search_author(books, query):
+    return [book for book in books if query.casefold() in book["author"].casefold()]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--file", type=Path, default=Path("books.json"))
@@ -49,13 +53,15 @@ def main():
     add.add_argument("--title", required=True)
     add.add_argument("--author", required=True)
     add.add_argument("--isbn", required=True)
+    author = commands.add_parser("search-author", help="Поиск по части имени автора")
+    author.add_argument("query")
     args = parser.parse_args()
     try:
         books = load_books(args.file)
         if args.command == "add":
             add_book(books, args.title, args.author, args.isbn)
             save_books(args.file, books)
-        result = books
+        result = search_author(books, args.query) if args.command == "search-author" else books
         print(json.dumps(result, ensure_ascii=False, indent=2))
     except (OSError, ValueError) as error:
         parser.exit(1, f"Ошибка: {error}\n")
