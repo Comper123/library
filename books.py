@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 
-MAX_BOOKS = 50
+MAX_BOOKS = 100
 
 
 def load_books(path):
