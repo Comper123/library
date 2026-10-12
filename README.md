@@ -11,3 +11,17 @@ python books.py list
 Данные — JSON-массив объектов с полями `title`, `author`, `isbn`.
 Рабочий `books.json` исключён из Git; пример хранится в репозитории.
 Для другого каталога: `python books.py --file other.json list`.
+
+## Команды
+
+```powershell
+python books.py add --title "Книга" --author "Автор" --isbn "978-5-17-090630-7"
+python books.py search-author "автор"
+python books.py export exports-list.json
+python -m unittest discover -s tests -v
+```
+
+Поиск автора нечувствителен к регистру. Повторный ISBN, пустые поля и
+превышение лимита отклоняются. Экспорт записывает отдельный JSON-файл;
+его родительский каталог должен существовать. ISBN сравнивается без пробелов
+и дефисов; контрольная сумма ISBN не проверяется.
