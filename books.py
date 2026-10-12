@@ -44,6 +44,10 @@ def search_author(books, query):
     return [book for book in books if query.casefold() in book["author"].casefold()]
 
 
+def search_isbn(books, query):
+    return [book for book in books if normalize_isbn(book["isbn"]) == normalize_isbn(query)]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--file", type=Path, default=Path("books.json"))

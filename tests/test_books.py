@@ -41,3 +41,8 @@ class CatalogTests(unittest.TestCase):
                                      "export", str(target)], capture_output=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual(books.load_books(target), catalog)
+
+    def test_isbn_search(self):
+        catalog = [{"title": "T", "author": "A", "isbn": "978-5-17-090630-7"}]
+        self.assertEqual(books.search_isbn(catalog, "9785170906307"), catalog)
+        self.assertEqual(books.search_isbn(catalog, "missing"), [])
